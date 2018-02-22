@@ -149,14 +149,14 @@ class Danny_ML_CLF:
         self.voting_pred = self.voting.predict(pred_x)
         return self.voting_pred
 
-    def Bagging(self,n_estimators=100, oob_score=True):
+    def Bagging(self,n_estimators=100, oob_score=False):
         self.bagging = BaggingClassifier(n_estimators=n_estimators,oob_score=oob_score)
         self.bagging.fit(self.X, self.y)
     def Bagging_prediction(self, pred_x):
         self.bagging_pred = self.bagging.predict(pred_x)
         return self.bagging_pred
 
-    def RF(self,n_estimators=100, criterion='gini', max_features='auto', oob_score=True):
+    def RF(self,n_estimators=100, criterion='gini', max_features='auto', oob_score=False):
         self.rf = RandomForestClassifier(n_estimators=n_estimators,criterion=criterion,
                                          max_features=max_features, oob_score=oob_score)
         self.rf.fit(self.X, self.y)
@@ -277,6 +277,7 @@ class Danny_ML_CLF:
         f.write('Voting Score : '+ str(self.voting_score) + '\n')
         f.write('Bagging Score : '+ str(self.bagging_score) + '\n')
         f.write('RF Score : '+ str(self.rf_score) + '\n')
+        f.write('Adaboost Score : '+ str(self.adaboost_score) + '\n')
         f.write('Adaboost Score : '+ str(self.adaboost_score) + '\n')
         f.write('XXXX\n')
         f.write('******************\nSVM : '+ str(self.svm_report) + '\n')
