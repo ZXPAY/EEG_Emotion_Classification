@@ -1,7 +1,6 @@
 import numpy as np
 import numpy.fft as fft
-from scipy.signal import butter, lfilter
-from scipy.signal import freqz
+import matplotlib.pyplot as plt
 
 def nextpow2(n):
     m_f = np.log2(n)
@@ -15,18 +14,28 @@ def FFT(data, sample_freq, data_length):
     x = sample_freq / 2 * np.linspace(0, 1, n / 2)
     return  x, Y
 
-def butter_bandpass(lowcut, highcut, fs, order=5):
-    nyq = 0.5 * fs
-    low = lowcut / nyq
-    high = highcut / nyq
-    b, a = butter(order, [low, high], btype='band')
-    return b, a
-
-
-def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
-    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
-    y = lfilter(b, a, data)
-    return y
+# Plot Raw Data on Time domain -- Function
+def PlotDataOnTimeDomain(RawData, SamplingFrequency, LowerYLim=4000, HigherYLim=5000, title=None):
+    SamplesPerMinute = SamplingFrequency*60   # Unit : samples/ minute
+    DataLength = RawData.shape[0]
+    ConsumingTime = DataLength/SamplesPerMinute   # Unit : minites
+    XTicksMinsList = []
+    XTicksSamplesList = []
+    for i in range((int(ConsumingTime)+1)):
+        XTicksMinsList.append(str((i))+'min')
+        XTicksSamplesList.append(i*SamplesPerMinute)
+    PlotXAxis = np.linspace(0, DataLength, DataLength)
+    plt.plot(PlotXAxis, RawData)
+    plt.xticks(XTicksSamplesList, XTicksMinsList, rotation=45)    # format the ticks
+    if title is None:
+        plt.title('Signal on Time Domain')
+    else:
+        plt.title(title)
+    plt.ylim(LowerYLim, HigherYLim)
+    plt.ylabel('micro voltage')
+    plt.xlabel('Time(min)')
+    plt.grid(True)
+    plt.show()
 
 
 '''Example:
