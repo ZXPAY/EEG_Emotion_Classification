@@ -32,7 +32,7 @@ def butter_lowpass_filter(data, cutOff, fs, order=4):
 # Plot Data on Frequency domain -- Function
 def PlotDataOnFreqDomain(FFTData, SamplingFrequency, LowerFreq=8, HigherFreq=30, title=None):
     PlotFreq = np.linspace(LowerFreq, HigherFreq, FFTData.shape[0])
-    plt.plot(PlotFreq, FFTData)
+    plt.plot(PlotFreq, FFTData, '*')
     if title is None:
         plt.title('Frequency Domain Plot')
     else:
