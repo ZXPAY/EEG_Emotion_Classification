@@ -156,7 +156,7 @@ class Danny_ML_CLF:
         self.bagging_pred = self.bagging.predict(pred_x)
         return self.bagging_pred
 
-    def RF(self,n_estimators=100, criterion='gini', max_features='auto', oob_score=False):
+    def RF(self,n_estimators=200, criterion='gini', max_features='auto', oob_score=False):
         self.rf = RandomForestClassifier(n_estimators=n_estimators,criterion=criterion,
                                          max_features=max_features, oob_score=oob_score)
         self.rf.fit(self.X, self.y)
