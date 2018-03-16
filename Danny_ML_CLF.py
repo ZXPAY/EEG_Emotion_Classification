@@ -93,7 +93,7 @@ class Danny_ML_CLF:
         return train_X, test_X, train_y, test_y
 
     def SVM(self,C=1,kernel='rbf'):
-        self.svm = SVC(C=C,kernel=kernel, degree=5, probability=True)
+        self.svm = SVC(C=C,kernel=kernel, degree=3, probability=True)
         self.svm.fit(self.X, self.y)
     def SVM_predict(self,pred_x):
         self.svm_pred = self.svm.predict(pred_x)
@@ -277,7 +277,6 @@ class Danny_ML_CLF:
         f.write('Voting Score : '+ str(self.voting_score) + '\n')
         f.write('Bagging Score : '+ str(self.bagging_score) + '\n')
         f.write('RF Score : '+ str(self.rf_score) + '\n')
-        f.write('Adaboost Score : '+ str(self.adaboost_score) + '\n')
         f.write('Adaboost Score : '+ str(self.adaboost_score) + '\n')
         f.write('XXXX\n')
         f.write('******************\nSVM : '+ str(self.svm_report) + '\n')
