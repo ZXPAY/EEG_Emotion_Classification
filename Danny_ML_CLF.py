@@ -14,6 +14,7 @@ from mlxtend.classifier import StackingClassifier
 from sklearn import metrics
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle  # To save the model
 import itertools
 
 
@@ -290,6 +291,55 @@ class Danny_ML_CLF:
         f.write('******************\nRF : '+ str(self.rf_report) + '\n')
         f.write('******************\nAdaboost : '+ str(self.adaboost_report) + '\n')
         f.close()
+
+        
+
+    def Save_Model(self, model_name = "MyModel"):
+        with open('save/'+model_name+'SVM'+'.pickle', 'wb') as f:
+            pickle.dump(self.svm, f)
+        with open('save/'+model_name+'Tree'+'.pickle', 'wb') as f:
+            pickle.dump(self.tree, f)
+        with open('save/'+model_name+'Bayes'+'.pickle', 'wb') as f:
+            pickle.dump(self.bayes, f)
+        with open('save/'+model_name+'KNNs'+'.pickle', 'wb') as f:
+            pickle.dump(self.knn, f)
+        with open('save/'+model_name+'XGB'+'.pickle', 'wb') as f:
+            pickle.dump(self.xgb, f)
+        with open('save/'+model_name+'Stacking'+'.pickle', 'wb') as f:
+            pickle.dump(self.stacking, f)
+        with open('save/'+model_name+'Voting'+'.pickle', 'wb') as f:
+            pickle.dump(self.voting, f)
+        with open('save/'+model_name+'Bagging'+'.pickle', 'wb') as f:
+            pickle.dump(self.bagging, f)
+        with open('save/'+model_name+'RF'+'.pickle', 'wb') as f:
+            pickle.dump(self.rf, f)
+        with open('save/'+model_name+'Adaboost'+'.pickle', 'wb') as f:
+            pickle.dump(self.adaboost, f)
+            
+    def Read_Model(self, model_name = 'MyModel'):
+        with open('save/'+model_name+'SVM'+'.pickle', 'rb') as f:
+            self.svm = pickle.load(f)
+        with open('save/'+model_name+'Tree'+'.pickle', 'rb') as f:
+            self.tree = pickle.load(f)
+        with open('save/'+model_name+'Bayes'+'.pickle', 'rb') as f:
+            self.bayes = pickle.load(f)
+        with open('save/'+model_name+'KNNs'+'.pickle', 'rb') as f:
+            self.knn = pickle.load(f)
+        with open('save/'+model_name+'XGB'+'.pickle', 'rb') as f:
+            self.xgb = pickle.load(f)
+        with open('save/'+model_name+'Stacking'+'.pickle', 'rb') as f:
+            self.stacking = pickle.load(f)
+        with open('save/'+model_name+'Voting'+'.pickle', 'rb') as f:
+            self.voting = pickle.load(f)
+        with open('save/'+model_name+'Bagging'+'.pickle', 'rb') as f:
+            self.bagging = pickle.load(f)
+        with open('save/'+model_name+'RF'+'.pickle', 'rb') as f:
+            self.rf = pickle.load(f)       # random forest
+        with open('save/'+model_name+'Adaboost'+'.pickle', 'rb') as f:
+            self.adaboost = pickle.load(f)
+
+
+
 
     def plot_confusion_matrix(self,cm, classes,normalize=False,title='Confusion matrix', cmap=plt.cm.Blues):
         """
