@@ -296,25 +296,25 @@ class Danny_ML_CLF:
 
     def Save_Model(self, model_name = "MyModel"):
         with open('save/'+model_name+'SVM'+'.pickle', 'wb') as f:
-            pickle.dump(self.svm, f)
+            pickle.dump(self.svm, f, protocol=2)
         with open('save/'+model_name+'Tree'+'.pickle', 'wb') as f:
-            pickle.dump(self.tree, f)
+            pickle.dump(self.tree, f, protocol=2)
         with open('save/'+model_name+'Bayes'+'.pickle', 'wb') as f:
-            pickle.dump(self.bayes, f)
+            pickle.dump(self.bayes, f, protocol=2)
         with open('save/'+model_name+'KNNs'+'.pickle', 'wb') as f:
-            pickle.dump(self.knn, f)
+            pickle.dump(self.knn, f, protocol=2)
         with open('save/'+model_name+'XGB'+'.pickle', 'wb') as f:
-            pickle.dump(self.xgb, f)
+            pickle.dump(self.xgb, f, protocol=2)
         with open('save/'+model_name+'Stacking'+'.pickle', 'wb') as f:
-            pickle.dump(self.stacking, f)
+            pickle.dump(self.stacking, f, protocol=2)
         with open('save/'+model_name+'Voting'+'.pickle', 'wb') as f:
-            pickle.dump(self.voting, f)
+            pickle.dump(self.voting, f, protocol=2)
         with open('save/'+model_name+'Bagging'+'.pickle', 'wb') as f:
-            pickle.dump(self.bagging, f)
+            pickle.dump(self.bagging, f, protocol=2)
         with open('save/'+model_name+'RF'+'.pickle', 'wb') as f:
-            pickle.dump(self.rf, f)
+            pickle.dump(self.rf, f, protocol=2)
         with open('save/'+model_name+'Adaboost'+'.pickle', 'wb') as f:
-            pickle.dump(self.adaboost, f)
+            pickle.dump(self.adaboost, f, protocol=2)
             
     def Read_Model(self, model_name = 'MyModel'):
         with open('save/'+model_name+'SVM'+'.pickle', 'rb') as f:
